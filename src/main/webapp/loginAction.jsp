@@ -11,7 +11,7 @@ String id = request.getParameter("id");
 		Map<String, String> map = new HashMap<>();
 		map.put("id", id);
 		map.put("password", password);
-		BookUserDao dao = BookUserDao.getInstance();
+		BookUserDao dao = BookUserDao.getInstance(); // dao 에서 싱글톤을 정의해주었기 때문에 써야 한다. 
 		BookUser vo = dao.login(map);
 		
 		String url = request.getContextPath();

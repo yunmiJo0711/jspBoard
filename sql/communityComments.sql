@@ -13,15 +13,17 @@ CREATE SEQUENCE comment_idx_seq;
 
 -- 댓글 테이블 데이터
 INSERT INTO communityComments (idx,mref,writer,content)
-VALUES (comment_idx_seq.nextval,3,'이하니','이글은 메인글 3번 댓글~');
+VALUES (comment_idx_seq.nextval,100,'hongGD','이글은 메인글 3번 댓글~');
 INSERT INTO communityComments (idx,mref,writer,content)
-VALUES (comment_idx_seq.nextval,3,'김땡땡','이글은 메인글 3번 댓글~2');
+VALUES (comment_idx_seq.nextval,113,'mina012','이글은 메인글 3번 댓글~2');
 INSERT INTO communityComments (idx,mref,writer,content)
-VALUES (comment_idx_seq.nextval,1,'이하니','이글은 메인글 333번 댓글~');
+VALUES (comment_idx_seq.nextval,108,'sana','이글은 메인글 333번 댓글~');
 INSERT INTO communityComments (idx,mref,writer,content)
-VALUES (comment_idx_seq.nextval,9,'김땡땡','이글은 메인글 333번 댓글~2');
+VALUES (comment_idx_seq.nextval,99,'twice','이글은 메인글 333번 댓글~2');
 INSERT INTO communityComments (idx,mref,writer,content)
-VALUES (comment_idx_seq.nextval,9,'김땡땡','하이!!!하이~~');
+VALUES (comment_idx_seq.nextval,120,'wonder','하이!!!하이~~');
+
+SELECT * FROM COMMUNITYCOMMENTS c ;
 
 -- 필요시 데이블 및 데이터 삭제
 DROP TABLE communityComments ;

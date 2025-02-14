@@ -8,7 +8,7 @@
     <title>회원가입</title> <!-- 밑의 link 에서 bootstrap 부트스트랩 사용한게 나옴. css 스타일 시트 링크를 복사해 head 부분에 추가해준다. -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/form.css"/>
-    <script type="text/javascript" src="../js/check3.js"></script>
+    <script type="text/javascript" src="../js/check3.js"></script> <!-- 부모(상위)폴더를 가져올 때 ../ 를 앞에 붙인다. -->
   </head>
   <body>
   <div class="container regForm">  
@@ -51,7 +51,7 @@
 	  <span class="input-group-text w90" id="basic-addon6">이메일 </span>
 	  <input type="email" class="form-control" name="email" 
 	  		 placeholder="이메일을 입력하세요." >
-	  <span id="emailMsg"></span>
+	  <span></span>
 	</div>
 	<div>
 		<button type="reset" class="btn btn-secondary">취소</button>
