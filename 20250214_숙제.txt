@@ -1,0 +1,73 @@
+<< attribute>> 찾기  -- community 폴더
+request.setAttribute("이름",값);  // 저장하는 데이터가 무엇인지
+pageContest.forward("xxx.jsp");  // 어디로 데이터를 전달해주는지 
+
+
+1. commentAction.jsp
+(31번째 라인)
+request.setAttribute("message", "댓글 등록이 완료되었습니다."); 	 	// 댓글 등록이 완료되었습니다. 를 "message" 이름으로 request 객체에 저장
+(38번째 라인)
+request.setAttribute("message", "댓글 삭제 완료되었습니다.");  		// 댓글 삭제 완료되었습니다. 를 "message" 이름으로 request 객체에 저장
+(44 번째 라인)
+request.setAttribute("url", "read.jsp?idx="+ mref + "&page="+pageNo);  	// 이 코드는 "url"이라는 이름으로 read.jsp 페이지로 이동할 수 있는 URL을 request에 저장하는 역할을 합니다.
+(45 번째 라인)
+pageContext.forward("alert.jsp"); 					// alert.jsp 로 request 한 데이터를 전달해준다. 
+
+
+
+2. delete.jsp
+(18, 19 번째 라인)
+if(dao.delete(idx)==1){
+	request.setAttribute("message", "글번호 " + idx +" 삭제되었습니다.");  // message라는 이름으로 "글번호 " + idx + " 삭제되었습니다."라는 문자열을 request 객체에 저장
+	request.setAttribute("url", "list.jsp?page="+pageNo);  		   //  pageNo 값을 포함한 URL 문자열을 request 객체에 "url"이라는 이름으로 저장
+	}
+(21번째 라인)
+pageContext.forward("alert.jsp");  					   // alert.jsp 로 request 한 데이터를 전달해준다. 
+
+
+
+3. list.jsp
+(31, 32번째 라인) 
+request.setAttribute("list", list);		// 메인글 목록 : List<Community> 타입
+request.setAttribute("today", LocalDate.now());	// 오늘 날짜 : LocalDate 타입
+(35, 36번째 라인) 
+request.setAttribute("page", pageNo);		// int  타입// 현재 페이지 번호 pageNo 값을 "page"라는 이름으로 request 객체에 저장
+request.setAttribute("paging", pages);		// Paging  타입 /현재 페이지 번호에 따라 계산된 페이지 목록
+(37번째 라인)
+pageContext.forward("listView.jsp"); 		// listView.jsp 로 request 한 데이터를 전달해준다. 
+
+
+
+4. read.jsp
+(25번째 라인)
+request.setAttribute("vo", vo);		// Community vo 타입 / vo 객체를 request 객체에 "vo"라는 이름으로 저장
+(27번째 라인)
+request.setAttribute("page", pageNo);		// int  타입 / 현재 페이지 번호 pageNo 값을 "page"라는 이름으로 request 객체에 저장
+(33번째 라인)
+request.setAttribute("cmtlist", cmtlist); 	// List<CommunityComments> 타입 / 댓글 목록 cmtlist 값을 "cmtlist" 라는 이름으로 저장
+(35번째 라인)
+pageContext.forward("readView.jsp");		// readView.jsp 로 request 한 데이터를 전달해준다. 
+
+
+
+5. update.jsp
+(37번째 라인)
+request.setAttribute("vo", vo);		// Community vo 타입 / vo 객체를 request 객체에 "vo"라는 이름으로 저장
+(39번째 라인)
+request.setAttribute("page", pageNo);		// int  타입 / 현재 페이지 번호 pageNo 값을 "page"라는 이름으로 request 객체에 저장
+(40번째 라인)
+pageContext.forward("updateView.jsp"); 	// updateView.jsp 로 request 한 데이터를 전달해준다. 
+
+
+
+6. updateAction.jsp
+(30, 31, 32번째 라인)
+if(result==1){
+request.setAttribute("message", "글 수정이 완료되었습니다.");		// request 객체에 "message"라는 이름으로 "글 수정이 완료되었습니다."라는 메시지를 저장
+request.setAttribute("url", "read.jsp?idx="+idx + "&page="+pageNo);	// request 객체에 "url"이라는 이름으로 read.jsp 페이지로 이동할 URL을 저장
+pageContext.forward("alert.jsp");					//  alert.jsp 로 request 한 데이터를 전달해준다. 
+	}
+
+    
+
+

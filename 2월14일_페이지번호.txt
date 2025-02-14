@@ -1,0 +1,36 @@
+http://localhost:8080/jspBoard/community/read.jsp?idx=228&page=7
+에서 page 파라미터는 왜 있을까요?
+            
+페이지 번호 전달되는 과정-----------------------
+0. list.jsp  : 어디에서 페이지 번호와 관련된 코드가 있나요?
+(13,14라인)
+	if(request.getParameter("page")==null) pageNo=1;
+	else pageNo = Integer.parseInt(request.getParameter("page"));
+(34라인)
+	request.setAttribute("page", pageNo);
+(36라인)
+	pageContext.forward("listView.jsp");   //listView.jsp로 page 애트리뷰트값이 전달. 
+					//pageContext.forward()는 JSP에서 요청을 다른 페이지로 전달하는 방법 중 하나입니다.
+
+1. listView.jsp 
+(36라인)
+<a href="read.jsp?idx=${vo.idx }&page=${paging.currentPage}" class="title">
+(98~99라인) startPage = 1, endPage=10 이라고 가정하고 분석. 
+	<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage }">
+		<a class="pagenum ieach" href="?page=${i }"><c:out value="${i }"/></a>
+	</c:forEach>
+2. read.jsp
+(17라인)  pageNo = Integer.parseInt(request.getParameter("page"));
+(27라인)  request.setAttribute("page", pageNo);
+(35라인)  pageContext.forward("readView.jsp");     //readView.jsp로 page 애트리뷰트값이 전달
+
+3. readView.jsp
+(60라인) <a class="button" href="list.jsp?page=${page }">목록</a>
+(75,76라인) 자바스크립트에서 이동할 URL 에 페이지 번호 포함
+       url = (f===1)? 'update.jsp?idx='+${vo.idx} :(f===2)? 'delete.jsp?idx='+${vo.idx}:'#';
+	     location.href=url+'&page='+${page}; 
+
+4. update.jsp 
+
+
+또는 4. delete.jsp

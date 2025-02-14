@@ -10,6 +10,7 @@
 <%
 int pageNo;
 //페이지 번호를 파라미터로 받습니다
+//http://localhost:8080/jspBoard/community/read.jsp?idx=228&page=7
 	if(request.getParameter("page")==null) pageNo=1;
 	else pageNo = Integer.parseInt(request.getParameter("page"));
 
